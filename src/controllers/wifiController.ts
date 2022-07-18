@@ -25,5 +25,5 @@ export const deleteWifiById = async (req: Request, res: Response) => {
     const userId = Number(res.locals.user.id);
     const id = Number(req.params.id);
     const deleted = await wifiServices.deleteById(userId, id);
-    res.status(204).send(deleted);
+    res.status(200).send(deleted);
 }

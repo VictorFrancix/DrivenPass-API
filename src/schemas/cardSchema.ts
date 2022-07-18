@@ -7,7 +7,7 @@ export const cardSchema = Joi.object().keys({
     password: Joi.string().required(),
     expiry: Joi.string().required(),
     number: Joi.string().required(),
-    isvirtual: Joi.boolean().required(),
+    isVirtual: Joi.boolean().required(),
     type : Joi.string().required()
 });
 

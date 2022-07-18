@@ -31,3 +31,11 @@ export async function deleteById(id: number) {
         where: { id }
     });
 }
+
+export async function getByTitle(title: string) {
+    const wifi = await prisma.wifi.findFirst({
+        where: { title }
+    });
+
+    return wifi;
+}

@@ -42,6 +42,12 @@ export const getById = async (userId: number, credentialId : number ) => {
 
 export const deleteById = async ( userId : number, credentialId : number ) => {
     const credential = await credentialRepository.getById(credentialId);
+    if(!credential){
+        throw {
+            type: "notFound",
+            message: "credential not found"
+        }
+    }
     dataUtils.checkUser(userId, credential.userId);
     return await credentialRepository.deleteById(credentialId);
 }

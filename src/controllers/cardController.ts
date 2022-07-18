@@ -25,7 +25,7 @@ export const getCardById = async (req: Request, res: Response) => {
 export const deleteCardById = async (req: Request, res: Response) => {
     const userId = Number(res.locals.user.id);
     const cardId = Number(req.params.id);
-    const card = await cardService.deleteById(userId, cardId);
+    const card = await cardService.deleteById(cardId, userId);
     res.status(200).send(card);
 }
 

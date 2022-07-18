@@ -61,5 +61,6 @@ export async function deleteById(id: number, userId: number){
 
     dataUtils.checkUser(card.userId, userId);
 
+
     return await cardRepository.deleteById(id);
 }
