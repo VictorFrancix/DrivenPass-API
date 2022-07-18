@@ -42,8 +42,6 @@ export async function getById(userId: number, id: number) {
 
     dataUtils.checkUser(note.userId, userId);
 
-    delete note.userId;
-
     return note;
 }
 
@@ -59,5 +57,5 @@ export async function deleteById(userId: number, id: number) {
 
     dataUtils.checkUser(note.userId, userId);
 
-    await notesRepository.deleteById(id);
+    return await notesRepository.deleteById(id);
 }
