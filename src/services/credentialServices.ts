@@ -24,8 +24,8 @@ export const getAll = async ( userId : number ) => {
 }
 
 export const getById = async (userId: number, credentialId : number ) => {
-
-    dataUtils.checkUser(userId, credentialId);
+    const credential = await credentialRepository.getById(credentialId);
+    dataUtils.checkUser(userId, credential.userId);
 
     if(!credentialId) {
         throw {
@@ -34,7 +34,7 @@ export const getById = async (userId: number, credentialId : number ) => {
         }
     }
 
-    const credential = await credentialRepository.getById(credentialId);
+    
     credential.password = dataUtils.decrypt(credential.password);
 
     return credential;
