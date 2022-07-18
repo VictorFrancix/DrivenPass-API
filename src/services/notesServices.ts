@@ -24,7 +24,7 @@ async function checkNoteTitleExists(title: string) {
     }
 }
 
-export async function get(userId: number) {
+export async function getAll(userId: number) {
     const notes = await notesRepository.getAll(userId);
 
     return notes;
