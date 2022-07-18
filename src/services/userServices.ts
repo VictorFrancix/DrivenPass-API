@@ -2,8 +2,8 @@ import bcrypt from 'bcrypt';
 import Jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
-import * as sessionRepository from '../repositories/sessionRepository';
-import * as userRepository from '../repositories/userRepository';
+import * as sessionRepository from '../repositories/sessionRepository.js';
+import * as userRepository from '../repositories/userRepository.js';
 
 dotenv.config();
 
@@ -38,14 +38,15 @@ const encryptPassword = (password: string) => {
 export const signin = async (dataUser: userRepository.dataUser) => {
     const {email, password} = dataUser;
     const user = await userRepository.getByEmail(email);
-    const isValidPassword = comparePassword(password, user.password);
 
-    if (!user || !isValidPassword) {
+    if (!user) {
         throw {
             type: "unauthorized",
             message: "invalid email or password"
         }
     }
+
+    comparePassword(password, user.password);
     
     const token = createToken(user.id);
 
@@ -66,7 +67,12 @@ export const signin = async (dataUser: userRepository.dataUser) => {
 
 const comparePassword = (password: string, encryptPassword: string) => {
     const isValid = bcrypt.compareSync(password, encryptPassword);
-    return isValid;
+    if (!isValid) {
+        throw {
+            type: "unauthorized",
+            message: "invalid email or password"
+        }
+    }
 }
 
 const createToken = (id: number) => {
