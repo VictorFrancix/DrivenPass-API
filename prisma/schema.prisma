@@ -68,6 +68,7 @@ model Cards {
   holder    String
   cvv       String
   expiry    String
+  password  String
   number    String
   isVirtual Boolean
   type      CardType
