@@ -18,8 +18,10 @@ export const getById = async ( id : number ) => {
     });
 }
 
-export const getAll = async () => {
-    return await prisma.credentials.findMany();
+export const getAll = async (userId: number) => {
+    return await prisma.credentials.findMany({
+        where : { userId }
+    });
 }
 
 export const deleteById = async ( id : number ) => {
