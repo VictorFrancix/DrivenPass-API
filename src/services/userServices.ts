@@ -52,17 +52,7 @@ export const signin = async (dataUser: userRepository.dataUser) => {
 
     await sessionRepository.create({ userId: user.id, token: token });
 
-    return {
-        token: token,
-        user: {
-            id: user.id,
-            email: user.email
-        }
-        
-
-
-
-}
+    return {token}
 }
 
 const comparePassword = (password: string, encryptPassword: string) => {
