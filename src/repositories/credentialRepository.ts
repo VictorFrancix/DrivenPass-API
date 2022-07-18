@@ -31,3 +31,11 @@ export const deleteById = async ( id : number ) => {
         }
     });
 }
+
+export const getByTitle = async ( title : string ) => {
+    return await prisma.credentials.findFirst({
+        where: {
+            title
+        }
+    });
+}

@@ -8,5 +8,6 @@ import { validateSchema } from "../middlewares/validateSchemaMiddleware.js";
 const credentialRouter = Router();
 
 credentialRouter.post("/credentials", validateToken, validateSchema(credentialSchema), credentialController.createCredential);
+credentialRouter.get("/credentials", validateToken, credentialController.getAllCredentials);
 
 export default credentialRouter;

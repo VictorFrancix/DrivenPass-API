@@ -9,3 +9,9 @@ export const createCredential = async (req: Request, res: Response) => {
     
     res.status(201).send(createdCredential);
 }
+
+export const getAllCredentials = async (req: Request, res: Response) => {
+    const userId = Number(res.locals.user.id);
+    const credentials = await credentialService.getAll(userId);
+    res.status(200).send(credentials);
+}
