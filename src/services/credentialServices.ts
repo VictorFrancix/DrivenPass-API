@@ -40,6 +40,12 @@ export const getById = async (userId: number, credentialId : number ) => {
     return credential;
 }
 
+export const deleteById = async ( userId : number, credentialId : number ) => {
+    const credential = await credentialRepository.getById(credentialId);
+    dataUtils.checkUser(userId, credential.userId);
+    return await credentialRepository.deleteById(credentialId);
+}
+
 
 
 
