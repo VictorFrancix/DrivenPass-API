@@ -155,7 +155,7 @@ $ npm run start
     - body: {}
 ```
 ```yml
-- DELETE /card/delete/:cardId
+- DELETE /cards/:id
     - Route to delete a user card by id
     - headers: { "Authorization": "Bearer $token" }
     - body: {}
