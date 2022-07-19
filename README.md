@@ -31,8 +31,9 @@ Drivenpass simulates a password manager. You can create an account and save your
 ```bash
 $ git clone https://github.com/VictorFrancix/DrivenPass-API
 $ cd DrivenPass-API
-$ npm i
-$ npm run dev
+$ npm install
+$ npx prisma migrate reset
+$ npm run start
 ```
 
 ## :flying_saucer: Routes
