@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "prisma:deploy": "prisma migrate deploy",
     "dev": "nodemon src/index.ts",
-    "build": "tsc",
+    "build": "tsc -p tsconfig.json",
     "start": "npm run prisma:deploy && node dist/index.js",
     "dev:migrate": "npx prisma migrate dev && node src/index.js"
   },
